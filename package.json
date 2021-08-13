@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm run nodemon",
+    "startup": "concurrently \"npm run server\" \"npm run client\"",
+    "install_server": "cd server && npm install",
+    "install_client": "cd client && npm install",
+    "install_root": "npm install",
+    "install_packages": "npm run install_root && npm run install_client && npm run install_server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
