@@ -1,13 +1,18 @@
 const c_users = [];
 
 // joins the user to the specific chatroom
-const userJoin = (id, username, room) => {
-  const p_user = { id, username, room };
+const userJoin = (id, username) => {
+    if (c_users.find(item => item.id === id)){
+        return true;
+    } else {
+        const p_user = { id, username };
+        c_users.push(p_user);
+        return false;
+    }
+}
 
-  c_users.push(p_user);
-  console.log(c_users, "users");
-
-  return p_user;
+const getAllUsers = () => {
+    return c_users;
 }
 
 console.log("user out", c_users);
@@ -27,6 +32,7 @@ const userDisconnect = (id) => {
 }
 
 module.exports = {
+    getAllUsers,
   userJoin,
   getCurrentUser,
   userDisconnect,
