@@ -20,8 +20,10 @@ io.on("connection", (socket) => {
     socket.on("join_room", ({username}) => {
         let isFound = userJoin(socket.id, username);
         if (!isFound) {
-            socket.emit("update_users", {users: getAllUsers()});
+            socket.emit("update_users", {users: getAllUsers(), type: "success"});
             socket.broadcast.emit("update_users", {users: getAllUsers()});
+        } else {
+            socket.emit("already_registered", {type: "error"})
         }
     })
 
